@@ -12,4 +12,4 @@ A well structure template for react app creation.
 
 ## Future Plans -
 
--
+- Add command utilities
