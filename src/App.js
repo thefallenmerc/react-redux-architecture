@@ -1,26 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
+import { userActions } from './_actions/user.action';
 
-function App() {
+function App(props) {
+  const handle = event => {
+    event.preventDefault();
+    console.log(props.user);
+    props.dispatch(userActions.login({email: 'thefallenmerc@gmail.com', password: 'password'}));
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={handle} >Try</button>
     </div>
   );
 }
 
-export default App;
+export default connect(state => ({ user: state.user }))(App);
